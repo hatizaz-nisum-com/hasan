@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: auth-service
+  namespace: hasan
+spec:
+  selector:
+    matchLabels:
+      app: auth-service
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+        - name: auth-service
+          image: redis
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8120 
